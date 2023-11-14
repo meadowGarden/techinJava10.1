@@ -8,8 +8,12 @@ public class ProductAlcohol extends Product {
     }
 
     @Override
-    public double priceWithVatEur(int rate) {
-        return 0.0;
+    public double priceWithTaxes() {
+
+        Taxes taxes = new Taxes();
+
+        return super.getProductPriceNettoEur() + taxes.vatTaxation(this, super.getProductPriceNettoEur())
+                + taxes.exciseTax(this, super.getProductPriceNettoEur(), super.getVolume(), this.alcoholVolume);
     }
 
     @Override

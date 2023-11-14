@@ -1,49 +1,38 @@
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
 
     public static void main(String[] args) {
 
-//        ProductGeneral bottleOfWater01 = new ProductGeneral("water bottle", 0.3, 1.0);
-//        System.out.println(bottleOfWater01);
-//        System.out.println(bottleOfWater01.priceWithVatEur(21));
-//
-//        ProductDrugs painkillers01 = new ProductDrugs("ibuprofen pack", 3.50);
-//        System.out.println(painkillers01);
-//
-//        ProductWine bottleOfWine01 = new ProductWine("wine bottle (weak)", 6.50, 1.0);
-//        System.out.println(bottleOfWine01);
-//
-//        ProductWine bottleOfWine02 = new ProductWine("wine bottle (strong)", 8.00, 1.0);
-//        System.out.println(bottleOfWine02);
-//
-//        ProductAlcohol bottleOfAlcohol1 = new ProductAlcohol("alcohol bottle (weak)", 10.00, 1.0);
-//        System.out.println(bottleOfAlcohol1);
-//
-//        ProductAlcohol bottleOfAlcohol02 = new ProductAlcohol("alcohol bottle (strong)", 15.00, 1.0);
-//        System.out.println(bottleOfAlcohol02);
-
         Scanner scanner = new Scanner(System.in);
         ProductPriceList  shopPriceList = new ProductPriceList();
 
+        mainManu(scanner, shopPriceList);
+    }
+
+    public static void mainManu(Scanner scanner, ProductPriceList  shopPriceList) {
         String menuInput;
 
-
         while (true) {
+
             System.out.println("choose what you want to do:\n  - enter new products (a) / manage price list (b) / exit (x)");
             menuInput = scanner.nextLine();
-
-            if (menuInput.equals("a")) {
-                operationsWithProducts(scanner, shopPriceList);
-            } else if (menuInput.equals("b")) {
-                System.out.println(shopPriceList);;
-            } else {
+            if (menuInput.equals("x")) {
                 break;
+            }
+
+            switch (menuInput) {
+                case "a" :
+                    operationsWithProducts(scanner, shopPriceList);
+                    break;
+                case "b" :
+                    operationsWithInventory(scanner, shopPriceList);
+                    break;
+                default:
+                    break;
             }
         }
     }
-
 
     public static void operationsWithProducts(Scanner scanner, ProductPriceList  shopPriceList) {
 
@@ -54,7 +43,7 @@ public class Main {
 
         while (true) {
 
-            System.out.println("enter wanted product type:\n  - general product (p1) / drugs (p2) - wine (p3) - alcohol (p4)");
+            System.out.println("\n - enter wanted product type:\n  -- general product (p1) / drugs (p2) - wine (p3) - alcohol (p4)");
             String enteredValue = scanner.nextLine();
             if (enteredValue.isEmpty()) {
                 break;
@@ -68,7 +57,6 @@ public class Main {
                     basePrice = Double.parseDouble(scanner.nextLine());
                     shopPriceList.add(new ProductGeneral(productName, basePrice));
                     break;
-
                 case "p2":
                     System.out.print("enter product name -> ");
                     productName = scanner.nextLine();
@@ -76,7 +64,6 @@ public class Main {
                     basePrice = Double.parseDouble(scanner.nextLine());
                     shopPriceList.add(new ProductDrugs(productName, basePrice));
                     break;
-
                 case "p3":
                     System.out.print("enter product name -> ");
                     productName = scanner.nextLine();
@@ -99,19 +86,35 @@ public class Main {
                     alcoholVolume = Double.parseDouble(scanner.nextLine());
                     shopPriceList.add(new ProductAlcohol(productName, basePrice, volume, alcoholVolume));
                     break;
+                default:
+                    break;
             }
-
         }
     }
 
+    public static void operationsWithInventory(Scanner scanner, ProductPriceList  shopPriceList) {
 
+        while (true) {
 
+            System.out.println("\n - choose your action with inventory:\n  -- print inventory (a) / delete product (b) / go back (x)");
+            String menuInput = scanner.nextLine();
+            if (menuInput.equals("x")) {
+                break;
+            }
 
-
-
-
-
-
-
+            switch (menuInput) {
+                case "a":
+                    System.out.println(shopPriceList);
+                    break;
+                case "b":
+                    System.out.println("choose which item to delete:");
+                    int itemToDelete = Integer.parseInt(scanner.nextLine());
+                    shopPriceList.removeByIndex(itemToDelete - 1);
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
 
 }

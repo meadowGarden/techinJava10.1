@@ -8,14 +8,11 @@ public class ProductGeneral extends Product {
         super(productName, productPriceNettoEur, volume);
     }
 
-
     @Override
-    public double priceWithVatEur(int rate) {
-        ValueAddedTax vat = new ValueAddedTax();
-        double priceBruttoEur = super.getProductPriceNettoEur() * ((double) (100 + rate) / 100);
-        return (double)Math.round(priceBruttoEur * 100) / 100;
+    public double priceWithTaxes() {
+        Taxes vat = new Taxes();
+        return super.getProductPriceNettoEur() + vat.vatTaxation(this, super.getProductPriceNettoEur());
     }
-
 
     @Override
     public String toString() {

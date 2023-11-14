@@ -32,7 +32,8 @@ public abstract class Product {
         return volume;
     }
 
-    abstract double priceWithVatEur(int rate);
+    abstract double priceWithTaxes();
+
 
     @Override
     public String toString() {

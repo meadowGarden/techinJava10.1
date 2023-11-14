@@ -17,6 +17,24 @@ public class ProductPriceList {
         priceList.remove(index);
     }
 
+    @Override
+    public String toString() {
+
+        String annotation = String.format("price list for current inventory%n");
+
+        String fullList = "";
+        for (Product item : priceList) {
+            fullList = fullList.concat(item.getProductName());
+            fullList = fullList.concat(", base price -> ");
+            fullList = fullList.concat(String.valueOf(item.getProductPriceNettoEur()));
+            fullList = fullList.concat(", price with vat -> ");
+            fullList = fullList.concat(String.valueOf(item.priceWithTaxes()));
+            fullList = fullList.concat("\n");
+        }
+
+        return "--- - ---\n" + annotation + fullList;
+    }
+
 
 
 }
