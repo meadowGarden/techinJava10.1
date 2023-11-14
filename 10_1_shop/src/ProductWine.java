@@ -17,6 +17,7 @@ public class ProductWine extends Product {
                 + taxes.exciseTax(this, super.getProductPriceNettoEur(), super.getVolume(), this.alcoholVolume);
     }
 
+
     @Override
     public String toString() {
         return String.format("wine: %s, ", super.getProductName());

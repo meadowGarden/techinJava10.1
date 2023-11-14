@@ -24,15 +24,20 @@ public class ProductPriceList {
 
         String fullList = "";
         for (Product item : priceList) {
-            fullList = fullList.concat(item.getProductName());
-            fullList = fullList.concat(", base price -> ");
-            fullList = fullList.concat(String.valueOf(item.getProductPriceNettoEur()));
-            fullList = fullList.concat(", price with vat -> ");
-            fullList = fullList.concat(String.valueOf(item.priceWithTaxes()));
+            fullList = fullList.concat(String.format("%-20s",item.getProductName()));
+//            fullList = fullList.concat(", base price (eur): ");
+//            fullList = fullList.concat(String.format("%.2f",item.getProductPriceNettoEur()));
+            fullList = fullList.concat(" price (eur): ");
+            fullList = fullList.concat(String.format("%.2f,",item.priceWithTaxes()));
+            fullList = fullList.concat(" price (chf): ");
+            fullList = fullList.concat(String.format("%.2f",item.priceWithTaxesConvertedFranc()));
             fullList = fullList.concat("\n");
         }
 
-        return "--- - ---\n" + annotation + fullList;
+        return "--------------------------------\n" +
+                annotation +
+                "--------------------------------\n" +
+                fullList;
     }
 
 

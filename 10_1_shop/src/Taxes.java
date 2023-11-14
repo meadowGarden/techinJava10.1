@@ -13,17 +13,13 @@ public class Taxes {
         if ((product instanceof ProductGeneral) || (product instanceof ProductDrugs)) {
             return 0.0;
         } else if ((product instanceof ProductWine) && (alcoholVolume <= 8.5)) {
-            tax = (volume * basePrice) * 0.28;
-            return (double)Math.round(tax * 100) / 100;
+            return (volume * basePrice) * 0.28;
         } else if ((product instanceof ProductWine) && (alcoholVolume > 8.5)) {
-            tax = (volume * basePrice) * 0.72;
-            return (double)Math.round(tax * 100) / 100;
+            return (volume * basePrice) * 0.72;
         } else if ((product instanceof ProductAlcohol) && (alcoholVolume <= 15)) {
-            tax = (volume * basePrice) * 0.89;
-            return (double)Math.round(tax * 100) / 100;
+            return (volume * basePrice) * 0.89;
         } else if ((product instanceof ProductAlcohol) && (alcoholVolume > 15)) {
-            tax = (volume * basePrice) * 1.26;
-            return (double)Math.round(tax * 100) / 100;
+            return (volume * basePrice) * 1.26;
         }
         return 0.0;
     }

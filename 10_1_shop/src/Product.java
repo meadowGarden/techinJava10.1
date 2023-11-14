@@ -33,6 +33,10 @@ public abstract class Product {
     }
 
     abstract double priceWithTaxes();
+    public double priceWithTaxesConvertedFranc() {
+        return (double)Math.round(priceWithTaxes() * 0.97 * 100) / 100;
+    }
+
 
 
     @Override

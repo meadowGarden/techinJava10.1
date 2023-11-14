@@ -15,9 +15,10 @@ public class Main {
 
         while (true) {
 
-            System.out.println("choose what you want to do:\n  - enter new products (a) / manage price list (b) / exit (x)");
+            System.out.println("-> choose what you want to do:\n  - enter new products (a)\n  - manage price list (b)\n  - exit (x)");
             menuInput = scanner.nextLine();
             if (menuInput.equals("x")) {
+                System.out.println("exiting");
                 break;
             }
 
@@ -43,7 +44,7 @@ public class Main {
 
         while (true) {
 
-            System.out.println("\n - enter wanted product type:\n  -- general product (p1) / drugs (p2) - wine (p3) - alcohol (p4)");
+            System.out.println(" -> enter wanted product type:\n  -- general product (p1)\n  -- drugs (p2)\n  -- wine (p3)\n  -- alcohol (p4)");
             String enteredValue = scanner.nextLine();
             if (enteredValue.isEmpty()) {
                 break;
@@ -96,7 +97,7 @@ public class Main {
 
         while (true) {
 
-            System.out.println("\n - choose your action with inventory:\n  -- print inventory (a) / delete product (b) / go back (x)");
+            System.out.println("\n -> choose your action with inventory:\n  -- print inventory (a)\n  -- delete product (b)\n  -- go back (x)");
             String menuInput = scanner.nextLine();
             if (menuInput.equals("x")) {
                 break;

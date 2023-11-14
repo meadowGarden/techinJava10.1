@@ -14,6 +14,7 @@ public class ProductGeneral extends Product {
         return super.getProductPriceNettoEur() + vat.vatTaxation(this, super.getProductPriceNettoEur());
     }
 
+
     @Override
     public String toString() {
         return String.format("general product: %s, ", super.getProductName());
